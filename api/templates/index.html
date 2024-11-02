@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Message Board</title>
+    <style>
+        /* Add some basic styles */
+        body { font-family: Arial, sans-serif; }
+        #messageBox { margin: 20px; }
+        #displayMessage { font-size: 24px; }
+    </style>
+</head>
+<body>
+    <div id="messageBox">
+        <input type="text" id="userInput" placeholder="Enter your name" />
+        <button onclick="submitMessage()">Submit</button>
+    </div>
+    <div id="displayMessage">_______ was here</div>
+
+    <script>
+        async function submitMessage() {
+            const userInput = document.getElementById(userInput).value;
+            if (!userInput) return alert("Please enter a name!");
+            const response = await fetch(/submit, {
+                method: POST,
+                headers: { Content-Type: application/json },
+                body: JSON.stringify({ name: userInput })
+            });
+            const data = await response.json();
+            document.getElementById(displayMessage).textContent = `${data.name} was here`;
+        }
+
+        async function loadMessage() {
+            const response = await fetch(/current);
+            const data = await response.json();
+            document.getElementById(displayMessage).textContent = `${data.name} was here`;
+        }
+
+        window.onload = loadMessage;
+    </script>
+</body>
+</html>
+
