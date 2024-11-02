@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang = "en">
+
 	<head>
 		<link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='bootstrap.css') }}">
+		<link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='style.css') }}">
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
+
 	<body>
-		<div class = "title">
-			<h1><strong>Dutch Auction</strong></h1>
+		<p class="d"><i>A Touch of Dutch</i></p>
+		<div class = "container-fluid border border-warning megabox">
+			<!--Main content of site, auction buttons, etc.-->
+			<div>
+				<br>
+				<h1><strong>Delicious Restaurant(Very Fancy)</strong></h1>
+				<br>
+				<p class = "textpadding">This is the most delicious of foods that could possibly exist. Hailing from a land, this food could quite possibly be the best food of all. Guests will be able to experience gastronomic titulations unlike anything offered by man. This is an exclusive one person event where our chefs will hand craft a specialized meal for the attendee. Please proceed to bidding if you would like to join us in culinary ecstacy.</p>
+			</div>
 		</div>
-		<div class = "info">
-			<p><i>A Touch of Dutch</i></p>
-			<h1>User Info Input</h1>
-			<div class = "input">
-				<!--<form method = "post" action = ""> --><!-- Need to implement where data is being stored for action -->
-				<form action="/about">…</form>
-					<label for="name">What is your name?</label>
-					<br>
-					<input type = "text" id = "name" name = "name">
-					<button onclick="sendBack()" >Enter</button>
-				</form>
-			</div> 
-			<p>My first paragraph.</p>
-			<script src="{{ url_for('static', filename='index.js') }}"></script>
-
+		<br><br>
+		<div class = "container-fluid border border-light minibox rounded">
+					<!--<form method = "post" action = ""> --><!-- Need to implement where data is being stored for action -->
+					<form action="/about">
+						<label class = "name" for="name"><strong>What Is Your Name?</strong></label>
+						<input class = "form-group form-control inputlg" type = "text" id = "name" name = "name">
+						<button type="button" class="btn btn-outline-success" onclick="window.location.href = 'https://m.youtube.com/watch?v=hL7WqurV7OE';">Enter</button>
+					</form> 
 		</div>
+		<script src="{{ url_for('static', filename='index.js') }}"></script>
 	</body>
-</html> 
-
+</html>
