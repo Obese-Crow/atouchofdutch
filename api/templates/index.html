@@ -3,7 +3,7 @@
 
 	<head>
 		<link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='bootstrap.css') }}">
-		<link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='style.css') }}">
+		<link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='style1.css') }}">
 		<meta charset="utf-8">
   		<meta name="viewport" content="width=device-width, initial-scale=1">
 	</head>
@@ -14,7 +14,7 @@
 			<!--Main content of site, auction buttons, etc.-->
 			<div>
 				<br>
-				<h1><strong>Delicious Restaurant(Very Fancy)</strong></h1>
+				<h1><strong>Delicious Restaurant (Very Fancy)</strong></h1>
 				<br>
 				<p class = "textpadding">This is the most delicious of foods that could possibly exist. Hailing from a land, this food could quite possibly be the best food of all. Guests will be able to experience gastronomic titulations unlike anything offered by man. This is an exclusive one person event where our chefs will hand craft a specialized meal for the attendee. Please proceed to bidding if you would like to join us in culinary ecstacy.</p>
 			</div>
@@ -26,6 +26,7 @@
 						<label class = "name" for="name"><strong>What Is Your Name?</strong></label>
 						<input class = "form-group form-control inputlg" type = "text" id = "name" name = "name">
 						<button type="button" class="btn btn-outline-success" onclick="window.location.href = 'https://m.youtube.com/watch?v=hL7WqurV7OE';">Enter</button>
+						
 					</form> 
 		</div>
 		<script src="{{ url_for('static', filename='index.js') }}"></script>
