@@ -18,27 +18,6 @@
     </div>
     <div id="displayMessage">_______ was here</div>
 
-    <script>
-        async function submitMessage() {
-            const userInput = document.getElementById(userInput).value;
-            if (!userInput) return alert("Please enter a name!");
-            const response = await fetch(/submit, {
-                method: POST,
-                headers: { Content-Type: application/json },
-                body: JSON.stringify({ name: userInput })
-            });
-            const data = await response.json();
-            document.getElementById(displayMessage).textContent = `${data.name} was here`;
-        }
-
-        async function loadMessage() {
-            const response = await fetch(/current);
-            const data = await response.json();
-            document.getElementById(displayMessage).textContent = `${data.name} was here`;
-        }
-
-        window.onload = loadMessage;
-    </script>
 </body>
 </html>
 
