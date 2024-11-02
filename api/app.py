@@ -11,3 +11,4 @@ def home():
 def bidding():
     return render_template("bidding.html")
 #test
+##
