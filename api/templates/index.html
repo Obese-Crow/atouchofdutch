@@ -1,22 +1,28 @@
- <!DOCTYPE html>
-<html>
+<!DOCTYPE html>
+<html lang = "en">
 	<head>
-
+		<link rel = "stylesheet" type = "text/css" href = "{{url_for('static', filename='bootstrap.css') }}">
 	</head>
 	<body>
-		<div id = "title">
-			<h1>Dutch Auction</h1>
+		<div class = "title">
+			<h1><strong>Dutch Auction</strong></h1>
 		</div>
-		<div id = ""
-	<p><i>A Touch of Dutch</i></p>
-		<h1>My First Heading</h1>
-		<p>My first paragraph.</p>
-		<script>
-			console.log('Hello World');
-		</script>
+		<div class = "info">
+			<p><i>A Touch of Dutch</i></p>
+			<h1>User Info Input</h1>
+			<div class = "input">
+				<!--<form method = "post" action = ""> --><!-- Need to implement where data is being stored for action -->
+				<form action="/about">…</form>
+					<label for="name">What is your name?</label>
+					<br>
+					<input type = "text" id = "name" name = "name">
+					<button onclick="sendBack()" >Enter</button>
+				</form>
+			</div> 
+			<p>My first paragraph.</p>
+			<script src="{{ url_for('static', filename='index.js') }}"></script>
 
-
-
+		</div>
 	</body>
 </html> 
 
