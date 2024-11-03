@@ -29,90 +29,78 @@
             font-size: 65px; 
             text-align: center; 
         } 
+        #loading {
+            display: none; /* Hidden by default */
+            font-size: 1.5em;
+            color: orange;
+        }
     </style>
 </head>
 <body>
     <p class="d"><i>A Touch of Dutch</i></p>
-        <div class="container-fluid border border-warning megabox rounded">
-            <div class = "money1">
-                <br><br>
-                <h1>Current Dollar Amount(USD):</h1>
-                <p class = "money" id = "money"></p>  
-            </div>
-            <div class = "bidding">                      
-                <button class = "btn btn-success btn-circle btn-xl" id="bidButton" type="submit" onclick = touchDutch()>BID</button>
-            </div>
+    <div class="container-fluid border border-warning megabox rounded">
+        <div class="money1">
+            <br><br>
+            <h1>Current Dollar Amount (USD):</h1>
+            <p class="money" id="money">$ 1000.00</p>  
         </div>
+        <div class="bidding">                      
+            <button class="btn btn-success btn-circle btn-xl" id="bidButton">BID</button>
+            <p id="loading">Processing your bid...</p>
+        </div>
+    </div>
     <script>
         const userName = "{{ name }}";
         const bidButton = document.getElementById("bidButton");
+        const loadingText = document.getElementById("loading");
 
-        bidButton.addEventListener("click", function () {
+        
+        moneyClock();
+
+        bidButton.addEventListener("click", async function () {
+            loadingText.style.display = 'block';
+
             const formData = new FormData();
             formData.append("name", userName);
 
-            fetch("/bidding", {
-                method: "POST",
-                body: formData,
-            })
-            .then((response) => response.json())
-            .then((data) => {
+            try {
+                const response = await fetch("/bidding", {
+                    method: "POST",
+                    body: formData,
+                });
+                const data = await response.json();
                 if (data.winner) {
                     window.location.href = "/winner";
                 }
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error('Error:', error);
-            });
+                loadingText.innerText = 'Someone else may have won, sorry.';
+            }
         });
 
-        setInterval(() => {
-            fetch("/get_winner")
-            .then((response) => response.json())
-            .then((data) => {
-                if (data.winner) {
-                    window.location.href = "/winner";
+        async function moneyClock() {
+            while (true) {
+                try {
+                    const response = await fetch('/get_amount');
+                    const data = await response.json();
+                    let money = data.amount;
+
+                    document.getElementById("money").innerHTML = "$ " + money.toFixed(2);
+
+                    if (money <= 0) {
+                        window.location.href = '/loser';
+                        break;
+                    }
+
+                    await fetch('/decrement', { method: 'POST' });
+
+                    await new Promise(resolve => setTimeout(resolve, 5)); // Wait 1 second
+                } catch (error) {
+                    console.error('Error fetching amount:', error);
+                    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait before retrying
                 }
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
-        }, 1000);
-
-
-        function sleep(ms) 
-        {
-            return new Promise(resolve => setTimeout(resolve, ms));
-        }
-            
-        async function moneyClock()
-        {
-            while(true)
-            {
-                const response = await fetch('/get_amount')
-                const data = await response.json();
-                let money = data.amount;
-
-                let num = money.toFixed(2);
-                document.getElementById("money").innerHTML = "$ " + num;
-
-                if (money <= 0) {
-                    break;
-                }
-                
-                await sleep(5);
             }
-            window.location.href = '/loser';
         }
-
-        const audio = new Audio('/static/victory.mp3');
-        
-        function touchDutch()
-        {
-            audio.play(); 
-        }
-
-        moneyClock();
     </script>
 </body>
 </html>

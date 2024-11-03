@@ -19,11 +19,11 @@
 	<body>
 		<p class="d"><i>A Touch of Dutch</i></p>
 		<div class = "container-fluid border border-warning megabox rounded">
-            <h1><i>The Winner Is...<i></h1>
+            <h1><i>You're the Winner!<i></h1>
             <p class = "winName">{{winner}}</p>
-            <p class = "winText">Winning Bid Amount: ${{amount | round(2)}}</p>
+            <p class = "winText">Winning Bid Amount: ${{'%.2f' % amount}}</p>
             <br>
-            <p class = "winText" <p><u>{{winner}}'s Curated Course</u></p>
+            <p class = "winText" ><u>{{winner}}'s Curated Course</u></p>
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gLMcUa2C9Do" allowfullscreen></iframe>
             </div>
