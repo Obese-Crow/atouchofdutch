@@ -14,10 +14,13 @@ client = redis.Redis(
 
 app = Flask(__name__)
 
-client.set('amount', 1000.00)
-client.delete('users')
-client.delete('winner')
-client.delete('gameOver')
+@app.route('/reset', methods=["POST"])
+def reset():
+    client.set('amount', 1000.00)
+    client.delete('users')
+    client.delete('winner')
+    client.delete('gameOver')
+    return redirect(url_for('index'))
 
 @app.route('/', methods=["POST", "GET"])
 def index():

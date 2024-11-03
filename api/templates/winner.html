@@ -27,6 +27,17 @@
             <div class="embed-responsive embed-responsive-16by9">
                 <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/gLMcUa2C9Do" allowfullscreen></iframe>
             </div>
+            <button type="button" class="btn btn-outline-danger rounded" onclick="resetAuction()">Reset Auction</button>
 		</div>
+        <script>
+            function resetAuction() {
+                fetch('/reset', { method: 'POST' })
+                    .then(response => {
+                        if (response.redirected) {
+                            window.location.href = response.url;
+                        }
+                    });
+            }
+        </script>
 	</body>
 </html>
