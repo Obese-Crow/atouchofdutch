@@ -82,7 +82,7 @@
         setInterval(async () => {
             await fetchCurrentAmount();
             await decrementAmount();
-        }, 10);
+        }, 500);
 
         bidButton.addEventListener("click", async function () {
             loadingText.style.display = 'block';
