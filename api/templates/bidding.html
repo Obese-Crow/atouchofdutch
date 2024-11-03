@@ -23,17 +23,17 @@
             text-align: center; 
         } 
         .btn-circle.btn-xl { 
-            width: 150px; 
-            height: 150px;
-            border-radius: 75px; 
-            font-size: 35px; 
+            width: 300px; 
+            height: 300px;
+            border-radius: 150px; 
+            font-size: 65px; 
             text-align: center; 
         } 
     </style>
 </head>
 <body>
     <p class="d"><i>A Touch of Dutch</i></p>
-        <div class="container-fluid border border-success minibox rounded-circle">
+        <div class="container-fluid border border-warning megabox rounded">
             <div class = "money1">
                 <br><br>
                 <h1>Current Dollar Amount(USD):</h1>
@@ -102,6 +102,7 @@
                 
                 await sleep(5);
             }
+            window.location.href = '/loser';
         }
 
         const audio = new Audio('/static/victory.mp3');

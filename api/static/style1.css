@@ -31,7 +31,7 @@ p {
 }
 
 .megabox {
-    width: 45%;
+    width: 60%;
     padding-bottom: 2%;
     padding-top: .5%;
     padding-left: 5%;
@@ -60,7 +60,20 @@ p {
     padding-right: 5%;
 }
 
-
+.ingList {
+    text-align: left;
+    font-size: 20px;
+    font-style: oblique;
+    font-family: serif;
+    color: #1b1b1b;
+}
+.ing {
+    text-align: center;
+    font-size: 35px;
+    font-style: oblique;
+    font-family: serif;
+    color: #1b1b1b;
+}
 
 
 

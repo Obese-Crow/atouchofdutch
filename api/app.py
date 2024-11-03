@@ -10,10 +10,14 @@ winning_amount = None
 lock = Lock()
 amount = 1000.00
 decrementing = False
+gameOver = False
 
 @app.route('/', methods=["POST", "GET"])
 def index():
-    global users, decrementing
+    global users, decrementing, gameOver
+    with lock:
+        if gameOver:
+            return redirect(url_for('loser'))
     if request.method == "POST":
         name = request.form.get("name")
         if name and name not in users:
@@ -43,16 +47,22 @@ def show_winner():
     global winner, winning_amount
     return render_template("winner.html", winner = winner, amount = winning_amount)
 
+@app.route('/loser')
+def loser():
+    return render_template("loser.html")
+
 @app.route('/get_amount', methods = ["GET"])
 def get_amount():
     global amount
     return jsonify({"amount": amount})
 def decrement_amount():
-    global amount
+    global amount, gameOver
     while amount > 0:
         time.sleep(.005)
         with lock:
             amount = max(0, amount - .01)
+    with lock:
+        gameOver = True
 
 if __name__ == "__main__":
     app.run(debug=True)
