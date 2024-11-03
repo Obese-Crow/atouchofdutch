@@ -45,6 +45,7 @@
             <p class="money" id="money">$ 1000.00</p>  
         </div>
         <div class="bidding">                      
+
             <button class="btn btn-success btn-circle btn-xl" id="bidButton">BID</button>
             <p id="loading">Processing your bid...</p>
         </div>
@@ -54,8 +55,34 @@
         const bidButton = document.getElementById("bidButton");
         const loadingText = document.getElementById("loading");
 
-        
-        moneyClock();
+        async function fetchCurrentAmount() {
+            try {
+                const response = await fetch('/get_amount');
+                const data = await response.json();
+                let money = data.amount;
+
+                document.getElementById("money").innerHTML = "$ " + money.toFixed(2);
+
+                if (money <= 0) {
+                    window.location.href = '/loser';
+                }
+            } catch (error) {
+                console.error('Error fetching amount:', error);
+            }
+        }
+
+        async function decrementAmount() {
+            try {
+                await fetch('/decrement', { method: 'POST' });
+            } catch (error) {
+                console.error('Error decrementing amount:', error);
+            }
+        }
+
+        setInterval(async () => {
+            await fetchCurrentAmount();
+            await decrementAmount();
+        }, 10);
 
         bidButton.addEventListener("click", async function () {
             loadingText.style.display = 'block';
@@ -78,29 +105,7 @@
             }
         });
 
-        async function moneyClock() {
-            while (true) {
-                try {
-                    const response = await fetch('/get_amount');
-                    const data = await response.json();
-                    let money = data.amount;
-
-                    document.getElementById("money").innerHTML = "$ " + money.toFixed(2);
-
-                    if (money <= 0) {
-                        window.location.href = '/loser';
-                        break;
-                    }
-
-                    await fetch('/decrement', { method: 'POST' });
-
-                    await new Promise(resolve => setTimeout(resolve, 5)); // Wait 1 second
-                } catch (error) {
-                    console.error('Error fetching amount:', error);
-                    await new Promise(resolve => setTimeout(resolve, 1000)); // Wait before retrying
-                }
-            }
-        }
+        fetchCurrentAmount();
     </script>
 </body>
 </html>
