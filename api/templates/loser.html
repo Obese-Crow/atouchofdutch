@@ -22,6 +22,19 @@
             <h1><i>You Didn't Win...<i></h1>
             <br>
             <img class = "img-fluid rounded mx-auto d-block" src = "https://i.kym-cdn.com/entries/icons/original/000/048/516/Screenshot_2024-02-20_at_10.43.43_AM.jpg">
+            <br>
+        <button type="button" class="btn btn-outline-danger rounded" onclick="resetAuction()">Reset Auction</button>
+		</div>
+        <script>
+            function resetAuction() {
+                fetch('/reset', { method: 'POST' })
+                    .then(response => {
+                        if (response.redirected) {
+                            window.location.href = response.url;
+                        }
+                    });
+            }
+        </script>
         </div>
 	</body>
 </html>
