@@ -1,0 +1,47 @@
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #141414;
+    text-align: center;
+    background-image: radial-gradient(circle,#2e2c2c,#0c0c0b);
+}
+
+.money {
+    font-size: 50px;
+}
+
+.bidding {
+    border: 3px;
+    font-family: monospace;
+    font-size: 35px;
+}
+
+.megabox {
+    width: 45%;
+    padding-bottom: 2%;
+    padding-top: .5%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 2px;
+    background-image: radial-gradient(circle,antiquewhite,#ecece2);
+}
+
+p {
+    font-size: 20px;
+    font-style: oblique;
+    font-family: serif;
+    color: #1b1b1b;
+}
+
+.d {
+    font-size: 22px;
+    font-style: oblique;
+    font-family: serif;
+    color: #dfdfdf;
+    text-align: right;
+    margin-right: 1%;
+}

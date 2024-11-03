@@ -6,7 +6,7 @@ body {
     line-height: 1.5;
     color: #5b5d5e;
     text-align: center;
-    background-image: radial-gradient(circle,#2e2c2c,#0c0c0b);
+    background-image: radial-gradient(circle,#494747,#0c0c0b);
   }
 
 h1 {
@@ -37,7 +37,7 @@ p {
     padding-left: 5%;
     padding-right: 5%;
     border: 2px;
-    background-color: antiquewhite;
+    background-image: radial-gradient(circle,antiquewhite,#ecece2);
 }
 
 .d {
@@ -46,7 +46,7 @@ p {
     font-family: serif;
     color: #dfdfdf;
     text-align: right;
-    margin-right: 2%;
+    margin-right: 1%;
 }
 
 .name
@@ -58,18 +58,6 @@ p {
 .textpadding {
     padding-left: 5%;
     padding-right: 5%;
-}
-
-.money {
-
-}
-
-.timer {
-
-}
-
-.bidding {
-    
 }
 
 

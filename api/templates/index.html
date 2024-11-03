@@ -11,7 +11,6 @@
 	<body>
 		<p class="d"><i>A Touch of Dutch</i></p>
 		<div class = "container-fluid border border-warning megabox">
-			<!--Main content of site, auction buttons, etc.-->
 			<div>
 				<br>
 				<h1><strong>Delicious Restaurant (Very Fancy)</strong></h1>
@@ -21,14 +20,11 @@
 		</div>
 		<br><br>
 		<div class = "container-fluid border border-light minibox rounded">
-					<!--<form method = "post" action = ""> --><!-- Need to implement where data is being stored for action -->
-					<form method = "post">
+					<form method = "post" action = "/">
 						<label class = "name" for="name"><strong>What Is Your Name?</strong></label>
 						<input class = "form-group form-control inputlg" type = "text" id = "name" name = "name">
 						<button type="submit" class="btn btn-outline-success">Enter</button>
-						
 					</form> 
 		</div>
-		<script src="{{ url_for('static', filename='index.js') }}"></script>
 	</body>
 </html>
