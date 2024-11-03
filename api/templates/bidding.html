@@ -49,6 +49,7 @@
             <button class="btn btn-success btn-circle btn-xl" id="bidButton">BID</button>
             <p id="loading">Processing your bid...</p>
         </div>
+        <button type="button" class="btn btn-outline-danger rounded" onclick="resetAuction()">Reset Auction</button>
     </div>
     <script>
         const userName = "{{ name }}";
@@ -106,6 +107,15 @@
         });
 
         fetchCurrentAmount();
+
+        function resetAuction() {
+            fetch('/reset', { method: 'POST' })
+                .then(response => {
+                    if (response.redirected) {
+                        window.location.href = response.url;
+                    }
+                });
+        }
     </script>
 </body>
 </html>
