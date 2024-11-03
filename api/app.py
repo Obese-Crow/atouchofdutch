@@ -14,7 +14,7 @@ client = redis.Redis(
 
 app = Flask(__name__)
 
-client.set('amount', 60.00)
+client.set('amount', 1000.00)
 client.delete('users')
 client.delete('winner')
 client.delete('gameOver')
